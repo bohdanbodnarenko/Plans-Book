@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
-import axios from 'axios'
 import { reduxFirestore ,getFirestore } from 'redux-firestore'
 import { reactReduxFirebase , getFirebase } from 'react-redux-firebase'
 
@@ -15,9 +14,9 @@ import config from './config/fbConfig';
 
 const store = createStore(rootReducer,
     compose(
-    applyMiddleware(thunk.withExtraArgument({ axios }))
-    // reduxFirestore(config),
-    // reactReduxFirebase(config),
+    applyMiddleware(thunk.withExtraArgument({ getFirebase,getFirestore })),
+    reduxFirestore(config),
+    reactReduxFirebase(config),
     )
 );
 
