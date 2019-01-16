@@ -1,0 +1,34 @@
+/* colors */
+/* #5D737E   */
+/* #084C61 */
+/* #DB504A */
+/* #E3B505 */
+/* #FCFFFD */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #5D737E;
+  color: #25282b;
+  font-weight: 400;
+}
+
+form{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #fff;
+  color: #000;
+  margin: 3% auto;
+  border-radius: 15px;
+}
+
+form > .input-field {
+  width: 90%;
+}
+
+button{
+  margin: 10%;
+}
