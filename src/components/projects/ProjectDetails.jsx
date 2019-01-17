@@ -1,26 +1,58 @@
 import React from "react";
+import { connect } from "react-redux";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
+import { Redirect } from 'react-router-dom'
+
+import Spinner from "../../UI/Spinner/Spinner";
 
 const ProjectDetails = props => {
-  const id = props.match.params.id;
-  return (
+  if(!props.auth.uid){
+    return <Redirect to='/signin' />
+  }
+  if(props.project){
+    return (
     <div className="container section project-details">
-      <div className="card z-depth-o">
+      <div className="card z-depth-o" style={{ borderRadius: "15px" }}>
         <div className="card-content">
-          <span className="card-title">Project Title</span>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam
-            ullam error deserunt adipisci, cum quos veritatis vero incidunt
-            beatae ratione nostrum pariatur suscipit delectus perferendis,
-            consectetur aperiam voluptates porro perspiciatis?
-          </p>
+          <span className="card-title">{props.project.title}</span>
+          <p>{props.project.content}</p>
         </div>
-        <div className="card-action grey lighten-4 grey-text">
-          <div>Posted by USER</div>
+        <div
+          style={{
+            borderBottomRightRadius: "15px",
+            borderBottomLeftRadius: "15px"
+          }}
+          className="card-action grey lighten-4 grey-text"
+        >
+          <div>
+            Posted by {props.project.authorFirstName}{" "}
+            {props.project.authorLastName}
+          </div>
           <div>2nd February</div>
         </div>
       </div>
     </div>
   );
+  }else{
+    return <div className="container center">
+      <Spinner />
+    </div>
+  }
+  
 };
 
-export default ProjectDetails;
+const mapStateToProps = (state, ownProps) => {
+  const id = ownProps.match.params.id;
+  const projects = state.firestore.ordered.projects;
+  const project = projects ? projects.filter(el => id === el.id)[0] : null;
+  return {
+    project,
+    auth: state.firebase.auth
+  };
+};
+
+export default compose(
+  firestoreConnect(["projects"]),
+  connect(mapStateToProps)
+)(ProjectDetails);

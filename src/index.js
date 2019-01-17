@@ -11,13 +11,15 @@ import './index.css';
 import App from './App';
 import rootReducer from './store/reducers/rootReducer';
 import config from './config/fbConfig';
-
 const store = createStore(rootReducer,
     compose(
     applyMiddleware(thunk.withExtraArgument({ getFirebase,getFirestore })),
     reduxFirestore(config),
-    reactReduxFirebase(config),
+    reactReduxFirebase(config,{attachAuthIsReady:true}),
     )
 );
 
-ReactDOM.render(<Provider store={ store }>< App /></Provider>, document.getElementById('root'));
+store.firebaseAuthIsReady.then(()=>{
+    ReactDOM.render(<Provider store={store}>< App/></Provider>, document.getElementById('root'));
+})
+

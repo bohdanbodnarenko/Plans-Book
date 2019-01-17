@@ -5,12 +5,12 @@ const SignedOutLinks = props => {
   return (
     <ul className="right">
       <li>
-        <NavLink to="/signup">
+        <NavLink  activeStyle={props.activeStyle} to="/signup">
             Signup
         </NavLink>
       </li>
       <li>
-        <NavLink to="/signin">
+        <NavLink  activeStyle={props.activeStyle} to="/signin">
             Login
         </NavLink>
       </li>

@@ -32,3 +32,7 @@ form > .input-field {
 button{
   margin: 10%;
 }
+
+.propject-summary{
+  border-radius: 10px;
+}
