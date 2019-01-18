@@ -29,10 +29,17 @@ form > .input-field {
   width: 90%;
 }
 
+.card{
+  border-radius: 15px;
+}
+
 button{
   margin: 10%;
 }
-
-.propject-summary{
+.btn, .btn-large{
   border-radius: 10px;
+}
+.error-red {
+  background-color: #c24846;
+  color: #8b0300;
 }

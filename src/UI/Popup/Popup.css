@@ -1,0 +1,21 @@
+.modalWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contentWrapper{
+    background-color: #FCFFFD;
+    max-width: 70%;
+    min-height: 20%;
+    max-height: 70%;
+    min-width: 25%;
+    overflow-y: inherit;
+    font-weight: 530;
+    font-size: 2em;
+    padding: 2%;
+    text-align: center;
+    border-radius: 15px;
+    outline: none;
+}

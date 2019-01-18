@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import {connect} from 'react-redux';
 
 import {signOut} from '../../store/Actions/authActions';
+import {toggleConfirmPopup} from '../../store/Actions/popupActions';
 
 
 const SignedInLinks = props => {
@@ -14,13 +15,16 @@ const SignedInLinks = props => {
         </NavLink>
       </li>
       <li>
-        <NavLink exact onClick={props.signOut} to="/">
+        <a
+        // onClick={props.signOut}
+        onClick={props.toggleConfirmPopup}
+         href="#">
             Log Out
-        </NavLink>
+        </a>
       </li>
       <li>
-        <NavLink to="/" style={{fontWeight:'500',backgroundColor:'#E3B505'}} className="btn btn-floating lighten-1">
-            BB
+        <NavLink to="/" style={{fontWeight:'500',backgroundColor:'#E3B505',borderRadius:'25px'}} className="btn btn-floating lighten-1">
+            {props.profile.initials}
         </NavLink>
       </li>
     </ul>
@@ -29,7 +33,8 @@ const SignedInLinks = props => {
 
 const mapDispatchToProps = dispatch =>{
   return {
-    signOut: () => dispatch(signOut())
+    signOut: () => dispatch(signOut()),
+    toggleConfirmPopup: () => dispatch(toggleConfirmPopup())
   }
 }
 

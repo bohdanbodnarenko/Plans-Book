@@ -14,7 +14,7 @@ export class SignUp extends Component {
 
   submitHandler = event => {
     event.preventDefault();
-    this.props.signUp(this.state.email)
+    this.props.signUp(this.state)
   };
   changeHandler = event => {
     this.setState({
@@ -37,8 +37,8 @@ export class SignUp extends Component {
           </div>
 
           <div className="input-field">
-            <label htmlFor="password">Second Name</label>
-            <input type="text" id="secondName" onChange={this.changeHandler} />
+            <label htmlFor="lastName">Second Name</label>
+            <input type="text" id="lastName" onChange={this.changeHandler} />
           </div>
 
           <div className="input-field">
@@ -46,17 +46,19 @@ export class SignUp extends Component {
             <input type="email" id="email" onChange={this.changeHandler} />
           </div>
 
-          <div className="input-field">
-            <label htmlFor="password">Password</label>
+          <div className="input-field ">
+            <label  htmlFor="password">Password</label>
             <input
               type="password"
               id="password"
               onChange={this.changeHandler}
             />
           </div>
-
           <div>
             <button className="btn-large">Login</button>
+          </div>
+          <div className="red-text center">
+            {this.props.authError ? <p>{this.props.authError}</p> : null}
           </div>
         </form>
       </div>
@@ -73,7 +75,7 @@ const mapStateToProps = state =>{
 
 const mapDispatchToProps = dispatch =>{
   return {
-    signUp: newUser => dispatch(signUp())
+    signUp: newUser => dispatch(signUp(newUser))
   }
 }
 

@@ -6,13 +6,22 @@ import ProjectDetails from './components/projects/ProjectDetails';
 import SignIn from './components/auth/SignIn';
 import SignUp from './components/auth/SignUp';
 import CreateProject from './components/projects/CreateProject';
+import Popup from './UI/Popup/Popup';
+import LogoutConfirm from './components/layout/LogoutConfirm/LogoutConfirm';
 
 class App extends Component {
+  state =  {
+    isConfirmPopupOpen:false
+  }
+  togglePopupOpen = () =>{
+    this.setState({isConfirmPopupOpen:!this.state.isConfirmPopupOpen})
+  }
   render() {
     return (
       <BrowserRouter>
         <div>
-         <Navbar />
+        <LogoutConfirm  />
+         <Navbar toggleModal = {this.togglePopupOpen} />
          <Switch>
            <Route exact path='/' component={Dashboard}/>
            <Route path='/project/:id' component={ProjectDetails}/>

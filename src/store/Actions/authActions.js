@@ -33,8 +33,6 @@ export const signOut = () => {
 }
 
 export const signUp = (newUser) => {
-    console.log(newUser)
-
     return (dispatch, getState, {
         getFirebase,
         getFirestore
@@ -51,15 +49,16 @@ export const signUp = (newUser) => {
                 firstName: newUser.firstName,
                 lastName: newUser.lastName,
                 initials: (newUser.firstName[0] + newUser.lastName[0]).toUpperCase()
-            }).then(() => {
+            }).then((resp) => {
                 dispatch({
-                    type: 'SIGNUP_SUCCESS'
+                    type: 'SIGNUP_SUCCESS',
+                    error: resp
                 })
-            }).catch(error => {
-                dispatch({
-                    type: 'SIGNUP_ERROR',
-                    error
-                })
+            })
+        }).catch(error => {
+            dispatch({
+                type: 'SIGNUP_ERROR',
+                error
             })
         })
     }

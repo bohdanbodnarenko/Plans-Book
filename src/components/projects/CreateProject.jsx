@@ -12,6 +12,7 @@ export class CreateProject extends Component {
   submitHandler = event => {
     event.preventDefault();
     this.props.createProject(this.state);
+    this.props.history.push('/')
   };
 
   changeHandler = event => {
