@@ -7,7 +7,7 @@ import {signOut} from '../../../store/Actions/authActions';
 const LogoutConfirm = (props) => {
   return (
     <Popup clicked={props.toggleConfirmPopup} open={props.open}>
-        <span>Are you shure to log out?</span>
+        <span >Are you shure to log out?</span>
         <button onClick={props.signOut} className="btn-large">Yes</button>
         <button  className="btn-large red">No</button>
     </Popup>

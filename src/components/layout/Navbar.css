@@ -1,0 +1,21 @@
+.logo {
+    font-size: 5vw;
+}
+
+.link-wrapper {
+    flex: 2;
+}
+
+@media (min-width:1000px){
+    .logo {
+        font-size: 3em;
+    }
+}
+@media (max-width:500px){
+    .link-wrapper {
+        padding:0
+    }
+    .link-wrapper > a {
+        font-size: .8em;
+    }
+}

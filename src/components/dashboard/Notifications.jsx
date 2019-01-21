@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 
 const Notifications = props => {
   return (
@@ -8,10 +9,17 @@ const Notifications = props => {
           <div className="card-content">
             <span className="card-title">Notifications</span>
             <ul className="notifications">
-              <li>Notification</li>
-              <li>Notification</li>
-              <li>Notification</li>
-              <li>Notification</li>
+              {props.notifications &&
+                props.notifications.map(el => (
+                  <li key={el.id}>
+                    <span style={{color:'#DB504A',fontWeight:'bold'}}>{el.user} </span>
+                    <span>{el.content}</span>
+                    <div className="grey-text note-date">
+                      {moment(el.time.toDate()).fromNow()}
+                    </div>
+                    <br/>
+                  </li>
+                ))}
             </ul>
           </div>
         </div>

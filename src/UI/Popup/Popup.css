@@ -19,3 +19,9 @@
     border-radius: 15px;
     outline: none;
 }
+
+@media (max-width:600px){
+    .contentWrapper {
+        font-size: 1.em;
+    }
+}

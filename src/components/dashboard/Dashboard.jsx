@@ -14,11 +14,11 @@ export class Dashboard extends Component {
     return (
       <div className="dashboard container">
         <div className="row">
+          <div className="col s12 m5 offset-m1">
+            <Notifications notifications={this.props.notifications} />
+          </div>
           <div className="col s12 m6 l3">
             <ProjectList projects={this.props.projects} />
-          </div>
-          <div className="col s12 m5 offset-m1">
-            <Notifications />
           </div>
         </div>
       </div>
@@ -29,11 +29,15 @@ export class Dashboard extends Component {
 const mapStateToProps = state => {
   return {
     projects: state.firestore.ordered.projects,
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
+    notifications: state.firestore.ordered.notifications
   };
 };
 
 export default compose(
-  firestoreConnect(["projects"]),
+  firestoreConnect([
+    {collection:"projects", orderBy:['createdAt','desc']},
+    {collection:"notifications",limit:5, orderBy:['time','desc']},
+  ]),
   connect(mapStateToProps)
 )(Dashboard);

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import SignedInLinks from './SignedInLinks';
 import SignedOutLinks from './SingedOutLinks';
 import {connect} from 'react-redux'
+import './Navbar.css'
 
 
 const Navbar = props => {
@@ -11,7 +12,7 @@ const Navbar = props => {
   return (
     <nav style={{backgroundColor:'#084C61'}} className="nav-wrapper darken-3">
       <div className="container">
-      <Link to='/' className="left" style={{fontSize:'2em'}}>Plan Book</Link>
+      <Link to='/' className="left logo">Plan Book</Link>
       {links}
       </div>
     </nav>

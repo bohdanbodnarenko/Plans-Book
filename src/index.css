@@ -25,6 +25,10 @@ form{
   border-radius: 15px;
 }
 
+.active-link{
+  color: #E3B505;
+}
+
 form > .input-field {
   width: 90%;
 }
@@ -43,3 +47,4 @@ button{
   background-color: #c24846;
   color: #8b0300;
 }
+  

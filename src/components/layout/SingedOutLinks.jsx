@@ -4,15 +4,11 @@ import { NavLink } from "react-router-dom";
 const SignedOutLinks = props => {
   return (
     <ul className="right">
-      <li>
-        <NavLink  activeStyle={props.activeStyle} to="/signup">
-            Signup
-        </NavLink>
+      <li className="link-wrapper">
+        <NavLink to="/signup">Signup</NavLink>
       </li>
-      <li>
-        <NavLink  activeStyle={props.activeStyle} to="/signin">
-            Login
-        </NavLink>
+      <li className="link-wrapper">
+        <NavLink to="/signin">Login</NavLink>
       </li>
     </ul>
   );
